@@ -1,0 +1,10 @@
+{
+  "name": "homework7",
+  "version": "1.0.0",
+  "description": "Homework7",
+  "main": "homework7.js",
+  "scripts": {
+    "test": "node homework7.js"
+  },
+  "author": "Yuliia"
+}

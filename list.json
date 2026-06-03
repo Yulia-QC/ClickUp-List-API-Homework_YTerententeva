@@ -1,0 +1,759 @@
+{
+    "lists": [
+        {
+            "id": "901218266737",
+            "name": "List",
+            "orderindex": 0,
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 2,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218267189",
+            "name": "Postman Homework List 1779460992503",
+            "orderindex": 2,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218267264",
+            "name": "Postman Homework List 1779461188449",
+            "orderindex": 6,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218267479",
+            "name": "Negative Auth Test List 1779461676765",
+            "orderindex": 8,
+            "content": "Temporary list for missing token test",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218267496",
+            "name": "Negative Auth Test List 1779461718519",
+            "orderindex": 9,
+            "content": "Temporary list for missing token test",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218267503",
+            "name": "Negative Auth Test List 1779461741881",
+            "orderindex": 10,
+            "content": "Temporary list for missing token test",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218267526",
+            "name": "Negative Auth Test List 1779461813343",
+            "orderindex": 11,
+            "content": "Temporary list for missing token test",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218267536",
+            "name": "Negative Auth Test List 1779461848520",
+            "orderindex": 12,
+            "content": "Temporary list for missing token test",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218267544",
+            "name": "Postman Homework List 1779461883308",
+            "orderindex": 13,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218267601",
+            "name": "Negative Auth Test List 1779462010308",
+            "orderindex": 16,
+            "content": "Temporary list for missing token test",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218268573",
+            "name": "Postman Homework List 1779463236634",
+            "orderindex": 19,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496247",
+            "name": "Postman Homework List 1780326476899",
+            "orderindex": 30,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496438",
+            "name": "Postman Homework List 1780326817845",
+            "orderindex": 31,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496455",
+            "name": "Postman Homework List 1780326851273",
+            "orderindex": 32,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496554",
+            "name": "Postman Homework List 1780327107957",
+            "orderindex": 33,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496579",
+            "name": "Postman Homework List 1780327165809",
+            "orderindex": 34,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496628",
+            "name": "Postman Homework List 1780327248616",
+            "orderindex": 35,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496660",
+            "name": "Postman Homework List 1780327321636",
+            "orderindex": 36,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496729",
+            "name": "Postman Homework List 1780327470214",
+            "orderindex": 37,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496733",
+            "name": "Postman Homework List 1780327484180",
+            "orderindex": 38,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496770",
+            "name": "Postman Homework List 1780327546793",
+            "orderindex": 39,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496777",
+            "name": "Postman Homework List 1780327578083",
+            "orderindex": 40,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218496809",
+            "name": "Postman Homework List 1780327621060",
+            "orderindex": 41,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218497708",
+            "name": "Postman Homework List 1780328949708",
+            "orderindex": 42,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218498858",
+            "name": "Postman Homework List 1780331032751",
+            "orderindex": 46,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218498864",
+            "name": "Postman Homework List 1780331043338",
+            "orderindex": 47,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        },
+        {
+            "id": "901218532211",
+            "name": "Postman Homework List 1780421545343",
+            "orderindex": 55,
+            "content": "Created by Postman homework collection",
+            "status": null,
+            "priority": null,
+            "assignee": null,
+            "task_count": 0,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "901211336075",
+                "name": "my test folder",
+                "hidden": false,
+                "archived": false,
+                "access": true
+            },
+            "space": {
+                "id": "90127545605",
+                "name": "test5",
+                "archived": false,
+                "access": true
+            },
+            "archived": false,
+            "override_statuses": false,
+            "permission_level": "create"
+        }
+    ]
+}
