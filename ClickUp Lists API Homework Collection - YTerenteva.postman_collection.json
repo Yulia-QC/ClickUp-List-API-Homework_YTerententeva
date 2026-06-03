@@ -1,0 +1,767 @@
+{
+  "info": {
+    "_postman_id": "c4ede9fa-2a56-402c-adef-248ce6671d3d",
+    "name": "ClickUp Lists API Homework -YTerenteva",
+    "description": "Homework collection for ClickUp Lists endpoints: create, get lists, get list, update, delete. Includes positive lifecycle and negative auth/validation checks.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14286759"
+  },
+  "item": [
+    {
+      "name": "01 Positive lifecycle - create, verify, update, delete",
+      "item": [
+        {
+          "name": "01 Create List",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }",
+                  "const unique = Date.now();",
+                  "pm.environment.set('list_name', `Postman Homework List ${unique}`);",
+                  "pm.environment.set('updated_list_name', `Postman Homework List Updated ${unique}`);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+                  "const json = pm.response.json();",
+                  "pm.test('Response has id and name', () => { pm.expect(json.id).to.exist; pm.expect(json.name).to.eql(pm.environment.get('list_name')); });",
+                  "pm.environment.set('list_id', json.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{list_name}}\",\n  \"content\": \"Created by Postman homework collection\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/folder/{{folder_id}}/list",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "folder",
+                "{{folder_id}}",
+                "list"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "02 Get Lists and verify created list exists",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }",
+                  "if (!pm.environment.get('list_id')) { throw new Error('Run 01 Create List first'); }"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+                  "const json = pm.response.json();",
+                  "const listId = pm.environment.get('list_id');",
+                  "pm.test('Response contains lists array', () => pm.expect(json.lists).to.be.an('array'));",
+                  "pm.test('Created list exists in folder lists', () => pm.expect(json.lists.map(l => String(l.id))).to.include(String(listId)));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/folder/{{folder_id}}/list?archived=false",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "folder",
+                "{{folder_id}}",
+                "list"
+              ],
+              "query": [
+                {
+                  "key": "archived",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "03 Get List by id",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }",
+                  "if (!pm.environment.get('list_id')) { throw new Error('Run 01 Create List first'); }"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+                  "const json = pm.response.json();",
+                  "pm.test('Correct list is returned', () => pm.expect(String(json.id)).to.eql(String(pm.environment.get('list_id'))));",
+                  "pm.test('List name is correct', () => pm.expect(json.name).to.eql(pm.environment.get('list_name')));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/list/{{list_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "list",
+                "{{list_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "04 Update List",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }",
+                  "if (!pm.environment.get('list_id')) { throw new Error('Run 01 Create List first'); }"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+                  "const json = pm.response.json();",
+                  "pm.test('Name was updated', () => pm.expect(json.name).to.eql(pm.environment.get('updated_list_name')));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{updated_list_name}}\",\n  \"content\": \"Updated by Postman homework collection\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/list/{{list_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "list",
+                "{{list_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "05 Verify updated List",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }",
+                  "if (!pm.environment.get('list_id')) { throw new Error('Run 01 Create List first'); }"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+                  "const json = pm.response.json();",
+                  "pm.test('Updated name is returned', () => pm.expect(json.name).to.eql(pm.environment.get('updated_list_name')));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/list/{{list_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "list",
+                "{{list_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "06 Delete List",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }",
+                  "if (!pm.environment.get('list_id')) { throw new Error('Run 01 Create List first'); }"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+                  "pm.environment.unset('list_id');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/list/{{list_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "list",
+                "{{list_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 Negative lifecycle - request without token",
+      "item": [
+        {
+          "name": "01 Create temp List",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }",
+                  "pm.environment.set('negative_unique', Date.now());"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+                  "pm.test(\"Create Temp List_ verify is not deleted\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.deleted).to.eql(false);",
+                  "});",
+                  "const json = pm.response.json();",
+                  "pm.environment.set('negative_list_id', json.id);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Negative Auth Test List {{negative_unique}}\",\n  \"content\": \"Temporary list for missing token test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/folder/{{folder_id}}/list",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "folder",
+                "{{folder_id}}",
+                "list"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "02 Get List without token should fail",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "if (!pm.environment.get('negative_list_id')) { throw new Error('Run 01 Create temp List first'); }"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Unauthorized or forbidden status is returned', () => pm.expect([400]).to.include(pm.response.code));"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/list/{{negative_list_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "list",
+                "{{negative_list_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "03 Delete temp List",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }",
+                  "if (!pm.environment.get('negative_list_id')) { throw new Error('Run 01 Create temp List first'); }"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+                  "pm.environment.unset('negative_list_id');"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/list/{{negative_list_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "list",
+                "{{negative_list_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03 Additional negative checks",
+      "item": [
+        {
+          "name": "Get List with invalid id",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Error status is returned', () => pm.expect([401]).to.include(pm.response.code));\r",
+                  "pm.test(\"Body matches string\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"Team not authorized\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/list/{{invalid_list_id}}",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "list",
+                "{{invalid_list_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create List without required name",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const token = pm.environment.get('clickup_token');",
+                  "if (!token || token.includes('PASTE_')) { throw new Error('Set clickup_token in the selected Postman environment'); }",
+                  "const folderId = pm.environment.get('folder_id');",
+                  "if (!folderId || folderId.includes('PASTE_')) { throw new Error('Set folder_id in the selected Postman environment'); }"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Body matches string\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"List Name Invalid\");\r",
+                  "});\r",
+                  "pm.test(\"Status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{clickup_token}}",
+                "type": "text"
+              },
+              {
+                "key": "accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"Name is intentionally missing\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.clickup.com/api/v2/folder/{{folder_id}}/list",
+              "protocol": "https",
+              "host": [
+                "api",
+                "clickup",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v2",
+                "folder",
+                "{{folder_id}}",
+                "list"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
