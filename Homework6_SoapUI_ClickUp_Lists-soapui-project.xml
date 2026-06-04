@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="Homework6SoapUI" activeEnvironment="Default" name="Homework6_ClickUp_Lists_API" resourceRoot="" soapui-version="5.7.0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="ClickUpListsService" wadlVersion="http://wadl.dev.java.net/2009/02" name="ClickUp Lists API" type="rest" basePath="/api/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart=""/>
+    <con:endpoints><con:endpoint>https://api.clickup.com</con:endpoint></con:endpoints>
+    <con:resource name="Create List" path="/folder/${#Project#folder_id}/list" id="CreateListResource">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="POST Create List" method="POST" id="PostCreateListMethod">
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType></con:representation>
+        <con:request name="POST create list" mediaType="application/json" postQueryString="false" id="PostCreateListRequest">
+          <con:settings/>
+          <con:endpoint>https://api.clickup.com</con:endpoint>
+          <con:request>{
+  "name": "SoapUI Homework List ${=System.currentTimeMillis()}",
+  "content": "Created by SoapUI homework test"
+}</con:request>
+          <con:credentials><con:authType>No Authorization</con:authType></con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+          <con:requestFilter/></con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="Get Lists" path="/folder/${#Project#folder_id}/list" id="GetListsResource"><con:settings/><con:parameters/><con:method name="GET Lists" method="GET" id="GetListsMethod"><con:settings/><con:parameters/><con:request name="GET lists" mediaType="application/json" id="GetListsRequest"><con:settings/><con:endpoint>https://api.clickup.com</con:endpoint><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:parameters/></con:request></con:method></con:resource>
+    <con:resource name="Get/Delete List by ID" path="/list/${#Project#list_id}" id="ListByIdResource"><con:settings/><con:parameters/><con:method name="GET List by ID" method="GET" id="GetListByIdMethod"><con:settings/><con:parameters/><con:request name="GET list by id" mediaType="application/json" id="GetListByIdRequest"><con:settings/><con:endpoint>https://api.clickup.com</con:endpoint><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:parameters/></con:request></con:method><con:method name="DELETE List" method="DELETE" id="DeleteListMethod"><con:settings/><con:parameters/><con:request name="DELETE list" mediaType="application/json" id="DeleteListRequest"><con:settings/><con:endpoint>https://api.clickup.com</con:endpoint><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:parameters/></con:request></con:method></con:resource>
+  </con:interface>
+  <con:testSuite id="Homework6Suite" name="Homework6 Status Code Tests">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="ClickUpTestCase" name="ClickUp Lists GET and POST">
+      <con:settings/>
+      <con:testStep type="restrequest" name="01 POST Create List" id="step-post">
+        <con:settings/>
+        <con:config service="ClickUp Lists API" resourcePath="/folder/${#Project#folder_id}/list" methodName="POST Create List" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="POST create list" mediaType="application/json" postQueryString="false"><con:settings/><con:endpoint>https://api.clickup.com</con:endpoint><con:request>{
+  "name": "SoapUI Homework List ${=System.currentTimeMillis()}",
+  "content": "Created by SoapUI homework test"
+}</con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:parameters/></con:restRequest>
+        </con:config>
+        <con:assertion type="Valid HTTP Status Codes" id="assert-post-status" name="Status code is 200"><con:configuration><codes>200</codes></con:configuration></con:assertion>
+      </con:testStep>
+      <con:testStep type="groovy" name="02 Save created list_id" id="step-save-id"><con:settings/><con:config><script>def response = context.expand('${01 POST Create List#Response}')
+def json = new groovy.json.JsonSlurper().parseText(response)
+testRunner.testCase.testSuite.project.setPropertyValue('list_id', json.id.toString())
+log.info 'Created list_id: ' + json.id</script></con:config></con:testStep>
+      <con:testStep type="restrequest" name="03 GET List by ID" id="step-get-id"><con:settings/><con:config service="ClickUp Lists API" resourcePath="/list/${#Project#list_id}" methodName="GET List by ID" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET list by id" mediaType="application/json"><con:settings/><con:endpoint>https://api.clickup.com</con:endpoint><con:parameters/></con:restRequest></con:config><con:assertion type="Valid HTTP Status Codes" id="assert-get-id-status" name="Status code is 200"><con:configuration><codes>200</codes></con:configuration></con:assertion></con:testStep>
+      <con:testStep type="restrequest" name="04 GET Lists" id="step-get-lists"><con:settings/><con:config service="ClickUp Lists API" resourcePath="/folder/${#Project#folder_id}/list" methodName="GET Lists" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="GET lists" mediaType="application/json"><con:settings/><con:endpoint>https://api.clickup.com</con:endpoint><con:parameters/></con:restRequest></con:config><con:assertion type="Valid HTTP Status Codes" id="assert-get-lists-status" name="Status code is 200"><con:configuration><codes>200</codes></con:configuration></con:assertion></con:testStep>
+      <con:testStep type="restrequest" name="05 DELETE List" id="step-delete"><con:settings/><con:config service="ClickUp Lists API" resourcePath="/list/${#Project#list_id}" methodName="DELETE List" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="DELETE list" mediaType="application/json"><con:settings/><con:endpoint>https://api.clickup.com</con:endpoint><con:parameters/></con:restRequest></con:config><con:assertion type="Valid HTTP Status Codes" id="assert-delete-status" name="Status code is 200 or 204"><con:configuration><codes>200,204</codes></con:configuration></con:assertion></con:testStep>
+      <con:properties/>
+    </con:testCase>
+    <con:properties/>
+  </con:testSuite>
+  <con:properties>
+    <con:property><con:name>clickup_token</con:name><con:value>PASTE_YOUR_CLICKUP_TOKEN_HERE</con:value></con:property>
+    <con:property><con:name>folder_id</con:name><con:value>PASTE_FOLDER_ID_HERE</con:value></con:property>
+    <con:property><con:name>list_id</con:name><con:value></con:value></con:property>
+  </con:properties>
+  <con:wssContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+</con:soapui-project>
